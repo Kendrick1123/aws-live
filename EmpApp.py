@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template,request
+from datetime import datetime
 from pymysql import connections
-import os
-import boto3
 from config import *
+import boto3
 
 app = Flask(__name__)
+app.secret_key = "magiv"
 
 bucket = custombucket
 region = customregion
@@ -17,30 +18,34 @@ db_conn = connections.Connection(
     db=customdb
 
 )
+
 output = {}
 table = 'employee'
 
 
-@app.route("/", methods=['GET', 'POST'])
+#MAIN PAGE
+@app.route("/")
 def home():
-    return render_template('AddEmp.html')
+    
+    return render_template("home.html",date=datetime.now())
+    
+#ADD EMPLOYEE DONE
+@app.route("/addemp/",methods=['GET','POST'])
+def addEmp():
+    return render_template("AddEmp.html",date=datetime.now())
 
+#EMPLOYEE OUTPUT
+@app.route("/addemp/results",methods=['GET','POST'])
+def Emp():
 
-@app.route("/about/")
-def about():
-    return render_template('index.html')
-
-
-@app.route("/addemp", methods=['POST'])
-def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     pri_skill = request.form['pri_skill']
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
-
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    check_in =''
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s,%s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
@@ -48,7 +53,7 @@ def AddEmp():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location,check_in))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
@@ -81,5 +86,48 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+
+   
+    
+
+#Get Employee DONE
+@app.route("/getemp/")
+def getEmp():
+    
+    return render_template('GetEmp.html',date=datetime.now())
+
+
+#Get Employee Results
+@app.route("/getemp/results",methods=['GET','POST'])
+def Employee():
+    
+     #Get Employee
+     emp_id = request.form['emp_id']
+    # SELECT STATEMENT TO GET DATA FROM MYSQL
+     select_stmt = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+
+     
+     cursor = db_conn.cursor()
+        
+     try:
+         cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
+         # #FETCH ONLY ONE ROWS OUTPUT
+         for result in cursor:
+            print(result)
+        
+
+     except Exception as e:
+        return str(e)
+        
+     finally:
+        cursor.close()
+    
+
+     return render_template("GetEmpOutput.html",result=result,date=datetime.now())
+
+
+
+
+# RMB TO CHANGE PORT NUMBER
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80, debug=True) # or setting host to '0.0.0.0'
