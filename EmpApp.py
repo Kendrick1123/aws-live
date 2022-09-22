@@ -125,7 +125,10 @@ def Employee():
 
      return render_template("GetEmpOutput.html",result=result,date=datetime.now())
 
-
+#About Us
+@app.route("/aboutus/")
+def Aboutus():
+    return render_template("index.html",date=datetime.now())
 
 
 # RMB TO CHANGE PORT NUMBER
