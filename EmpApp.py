@@ -159,6 +159,24 @@ def editEmployee():
     
 
      return render_template("EditEmpOutput.html",result=result,date=datetime.now())
+    
+    
+@app.route("/editemp/results",methods=['GET','POST'])
+def editEmp():
+
+    emp_id = request.form['emp_id']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    pri_skill = request.form['pri_skill']
+    location = request.form['location']
+  
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    cursor = db_conn.cursor()
+
+
+
+    print("all modification done...")
+    return render_template('AddEmpOutput.html', name=emp_name)
 #About Us
 @app.route("/aboutus/")
 def Aboutus():
