@@ -161,7 +161,7 @@ def editEmployee():
      return render_template("EditEmpOutput.html",result=result,date=datetime.now())
     
     
-@app.route("/editemp/results",methods=['GET','POST'])
+@app.route("/editemp/done",methods=['GET','POST'])
 def editEmpdone():
 
     emp_id = request.form['emp_id']
