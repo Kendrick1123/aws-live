@@ -127,14 +127,14 @@ def Employee():
 
  #Edit Employee DONE
 @app.route("/editemp/")
-def getEmp():
+def editEmp():
     
     return render_template('EditEmp.html',date=datetime.now())
 
 
 #edit Employee Results
 @app.route("/editemp/results",methods=['GET','POST'])
-def Employee():
+def editEmployee():
     
      #Get Employee
      emp_id = request.form['emp_id']
