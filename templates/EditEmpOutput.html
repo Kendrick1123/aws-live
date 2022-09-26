@@ -27,26 +27,33 @@
 			<div class="form-bubble">
 				<div class="form-bubble-container form-bubble-container-get">
 					<p> Employee ID </p>
-          <input type="number" name="emp_id" autofocus placeholder="Employee ID">
+          <input type="number" name="emp_id" autofocus placeholder={{ result[0]}}>
 				<img src="{{ url_for('static', filename='img/id.png')}}" class="input-icons">
-					<p>{{ result[0]}}</p>
+					
 				</div>
 				<div class="form-bubble-container form-bubble-container-get">
 					<p>First Name</p>
-          
-					<p>{{ result[1]}}</p>
+					<input type="text" name="first_name" autofocus placeholder={{result[1]}}>
+				<img src="{{ url_for('static', filename='img/profile.png')}}" class="input-icons">
+			
 				</div>
 				<div class="form-bubble-container form-bubble-container-get">
 					<p>Last Name</p>
-					<p>{{ result[2]}}</p>
+					<input type="text" name="last_name" autofocus placeholder={{result[2]}}>
+				<img src="{{ url_for('static', filename='img/profile.png')}}" class="input-icons">
+			
 				</div>
 				<div class="form-bubble-container form-bubble-container-get">
 					<p>Primary Skill </p>
-					<p>{{ result[3] }}</p>
+					<input type="text" name="pri_skill" autofocus placeholder={{result[3]}}>
+				<img src="{{ url_for('static', filename='img/bag.png')}}" class="input-icons">
+			
 				</div>
 				<div class="form-bubble-container form-bubble-container-get">
 					<p>Location </p>
-					<p>{{ result[4] }}</p>
+					<input type="text" name="location" autofocus placeholder={{result[4]}}>
+				<img src="{{ url_for('static', filename='img/location.png')}}" class="input-icons">
+			
 				</div>
 			</div>
 			<div class="button-container">
