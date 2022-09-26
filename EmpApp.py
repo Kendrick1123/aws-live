@@ -125,6 +125,40 @@ def Employee():
 
      return render_template("GetEmpOutput.html",result=result,date=datetime.now())
 
+ #Edit Employee DONE
+@app.route("/editemp/")
+def getEmp():
+    
+    return render_template('EditEmp.html',date=datetime.now())
+
+
+#edit Employee Results
+@app.route("/editemp/results",methods=['GET','POST'])
+def Employee():
+    
+     #Get Employee
+     emp_id = request.form['emp_id']
+    # SELECT STATEMENT TO GET DATA FROM MYSQL
+     select_stmt = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+
+     
+     cursor = db_conn.cursor()
+        
+     try:
+         cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
+         # #FETCH ONLY ONE ROWS OUTPUT
+         for result in cursor:
+            print(result)
+        
+
+     except Exception as e:
+        return str(e)
+        
+     finally:
+        cursor.close()
+    
+
+     return render_template("EditEmpOutput.html",result=result,date=datetime.now())
 #About Us
 @app.route("/aboutus/")
 def Aboutus():
