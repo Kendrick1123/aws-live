@@ -162,7 +162,7 @@ def editEmployee():
     
     
 @app.route("/editemp/results",methods=['GET','POST'])
-def editEmp():
+def editEmpdone():
 
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
