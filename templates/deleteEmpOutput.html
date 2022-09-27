@@ -35,10 +35,13 @@
 		<div class="form-container form-container-get-output">
 			<form autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
 			<div class="form-bubble">
-				<div class="form-bubble-container form-bubble-container-get">
-					<label for="emp_id">Employee ID</label>
-					<input type="number" name="emp_id" autofocus placeholder={{result[0]}}>
-				</div>
+				<div class="form-container">
+		<form  autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+			<div class="form-bubble-container form-bubble-container">
+				<label for="emp_id">Employee ID</label>
+				<input type="number" name="emp_id" autofocus placeholder={{result[0]}}>
+				<img src="{{ url_for('static', filename='img/id.png')}}" class="input-icons">
+			</div>
 				<div class="form-bubble-container form-bubble-container-get">
 					<p>First Name</p>
 					<p>{{ result[1]}}</p>
