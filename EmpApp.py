@@ -226,7 +226,7 @@ cursor = db_conn.cursor()
 cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
          # #FETCH ONLY ONE ROWS OUTPUT
      
-       
+return render_template("deleteEmpDone.html",date=datetime.now())       
     
 
 #About Us
