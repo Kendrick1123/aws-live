@@ -228,7 +228,7 @@ def deletedelete():
     cursor.execute("""DELETE FROM employee WHERE emp_id=%s""",(emp_id))
          # #FETCH ONLY ONE ROWS OUTPUT
     db_conn.commit()
-    return render_template("deleteEmpDone.html",date=datetime.now(),id=emp_id)       
+    return render_template("deleteEmpDone.html",date=datetime.now())       
     
 
 #About Us
