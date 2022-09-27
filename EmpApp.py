@@ -197,12 +197,13 @@ def deleteEmployee():
      emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
      select_stmt = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
-
+     
      
      cursor = db_conn.cursor()
         
      try:
          cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
+         db_conn.commit()
          # #FETCH ONLY ONE ROWS OUTPUT
          for result in cursor:
             print(result)
@@ -222,11 +223,11 @@ def deleteEmployee():
 def deletedelete():
     emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
-    delete_stmt = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
+    delete_stmt = """DELETE FROM employee WHERE id=%s"""
     cursor = db_conn.cursor()  
-    cursor.execute(delete_stmt, { 'emp_id': int(emp_id) })
+    cursor.execute(delete_stmt,[emp_id])
          # #FETCH ONLY ONE ROWS OUTPUT
-     
+    db_conn.commit()
     return render_template("deleteEmpDone.html",date=datetime.now())       
     
 
