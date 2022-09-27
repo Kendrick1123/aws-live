@@ -192,7 +192,7 @@ def deleteEmp():
 #delete Employee Results
 @app.route("/deleteemp/results",methods=['GET','POST'])
 def deleteEmployee():
-     global result
+     
      #Get Employee
      emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
@@ -203,7 +203,7 @@ def deleteEmployee():
         
      try:
          cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
-         db_conn.commit()
+         
          # #FETCH ONLY ONE ROWS OUTPUT
          for result in cursor:
             print(result)
