@@ -217,7 +217,7 @@ def deleteEmployee():
      return render_template("deleteEmpOutput.html",result=result,date=datetime.now())
 
 #delete emply
-@app.route("/deleteemp/delete",methods=['GET','POST'])
+@app.route("/deleteempdone/",methods=['GET','POST'])
 def deletedelete():
     emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
