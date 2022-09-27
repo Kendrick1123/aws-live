@@ -223,12 +223,12 @@ def deleteEmployee():
 def deletedelete():
     emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
-    delete_stmt = """DELETE FROM employee WHERE id=%s"""
+    
     cursor = db_conn.cursor()  
-    cursor.execute(delete_stmt,[emp_id])
+    cursor.execute("""DELETE FROM employee WHERE emp_id=%s""",(emp_id))
          # #FETCH ONLY ONE ROWS OUTPUT
     db_conn.commit()
-    return render_template("deleteEmpDone.html",date=datetime.now())       
+    return render_template("deleteEmpDone.html",date=datetime.now(),id=emp_id)       
     
 
 #About Us
