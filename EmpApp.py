@@ -139,7 +139,7 @@ def editEmployee():
      #Get Employee
      emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
-    INSERT INTO employee VALUES (%s, %s, %s, %s, %s)
+     
      update_stmt = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
 
      
