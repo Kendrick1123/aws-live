@@ -139,7 +139,8 @@ def editEmployee():
      #Get Employee
      emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
-     update_stmt = "UPDATE * FROM employee WHERE emp_id = %(emp_id)s"
+    INSERT INTO employee VALUES (%s, %s, %s, %s, %s)
+     update_stmt = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
 
      
      cursor = db_conn.cursor()
@@ -170,9 +171,9 @@ def editEmpdone():
     pri_skill = request.form['pri_skill']
     location = request.form['location']
   
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    UPDATE_sql = "UPDATE employee VALUES (%s, %s, %s, %s, %s) WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
-    cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location,))
+    cursor.execute(UPDATE_sql, (emp_id, first_name, last_name, pri_skill, location,))
     db_conn.commit()
     emp_name = "" + first_name + " " + last_name
 
