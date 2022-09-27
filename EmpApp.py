@@ -180,6 +180,55 @@ def editEmpdone():
 
     print("all modification done...")
     return render_template('editDone.html', name=emp_name)
+
+#delete Employee DONE
+@app.route("/deleteemp/")
+def deleteEmp():
+    
+    return render_template('deleteEmp.html',date=datetime.now())
+
+
+#delete Employee Results
+@app.route("/deleteemp/results",methods=['GET','POST'])
+def deleteEmployee():
+    
+     #Get Employee
+     emp_id = request.form['emp_id']
+    # SELECT STATEMENT TO GET DATA FROM MYSQL
+     select_stmt = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+
+     
+     cursor = db_conn.cursor()
+        
+     try:
+         cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
+         # #FETCH ONLY ONE ROWS OUTPUT
+         for result in cursor:
+            print(result)
+        
+
+     except Exception as e:
+        return str(e)
+        
+     finally:
+        cursor.close()
+    
+
+     return render_template("deleteEmpOutput.html",result=result,date=datetime.now())
+
+#delete emply
+@app.route("/deleteemp/delete",methods=['GET','POST'])
+def deletedelete():
+emp_id = request.form['emp_id']
+# SELECT STATEMENT TO GET DATA FROM MYSQL
+select_stmt = "DELETE * FROM employee WHERE emp_id = %(emp_id)s"
+cursor = db_conn.cursor()  
+cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
+         # #FETCH ONLY ONE ROWS OUTPUT
+     
+       
+    
+
 #About Us
 @app.route("/aboutus/")
 def Aboutus():
