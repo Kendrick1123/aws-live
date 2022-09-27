@@ -171,7 +171,7 @@ def editEmpdone():
     pri_skill = request.form['pri_skill']
     location = request.form['location']
   
-    UPDATE_sql = "UPDATE employee VALUES (%s, %s, %s, %s, %s) WHERE emp_id = %(emp_id)s"
+    UPDATE_sql = "UPDATE employee SET emp_id=%s, first_name=%s, last_name=%s, pri_skill=%s, location=%s WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
     cursor.execute(UPDATE_sql, (emp_id, first_name, last_name, pri_skill, location,))
     db_conn.commit()
@@ -222,7 +222,7 @@ def deleteEmployee():
 def deletedelete():
     emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
-    delete_stmt = "DELETE * FROM employee WHERE emp_id = %(emp_id)s"
+    delete_stmt = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()  
     cursor.execute(delete_stmt, { 'emp_id': int(emp_id) })
          # #FETCH ONLY ONE ROWS OUTPUT
