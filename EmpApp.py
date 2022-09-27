@@ -173,7 +173,7 @@ def editEmpdone():
   
     UPDATE_sql = "UPDATE employee SET emp_id=%s, first_name=%s, last_name=%s, pri_skill=%s, location=%s WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
-    cursor.execute(UPDATE_sql, (emp_id, first_name, last_name, pri_skill, location,))
+    cursor.execute(UPDATE_sql)
     db_conn.commit()
     emp_name = "" + first_name + " " + last_name
 
