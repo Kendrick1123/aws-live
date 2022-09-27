@@ -164,7 +164,7 @@ def editEmployee():
 @app.route("/editemp/done",methods=['GET','POST'])
 def editEmpdone():
 
-    
+    emp_id=request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     pri_skill = request.form['pri_skill']
