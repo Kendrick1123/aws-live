@@ -180,7 +180,7 @@ def editEmpdone():
 
 
     print("all modification done...")
-    return render_template('editDone.html', name=emp_name)
+    return render_template('editDone.html', name=emp_name,date=datetime.now())
 
 #delete Employee DONE
 @app.route("/deleteemp/")
