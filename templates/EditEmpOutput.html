@@ -23,44 +23,38 @@
 		{{ date.strftime("%A, %d %B, %Y at %X") }}
 	</div>
 </div>
-		<div class="form-container" action="/editemp/done" autocomplete="on" method="POST" enctype="multipart/form-data">
-			<div class="form-bubble">
-				<div class="form-bubble-container form-bubble-container-get">
-					<p> Employee ID </p>
-          <input type="number" name="emp_id" autofocus placeholder={{ result[0]}}>
+		<form action="/editemp/done autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+			<div class="form-bubble-container form-bubble-container">
+				<label for="emp_id">Employee ID</label>
+				<input type="number" name="emp_id" autofocus placeholder={{result[0]}}>
 				<img src="{{ url_for('static', filename='img/id.png')}}" class="input-icons">
-					
-				</div>
-				<div class="form-bubble-container form-bubble-container-get">
-					<p>First Name</p>
-					<input type="text" name="first_name" autofocus placeholder={{result[1]}}>
+			</div>
+			<div class="form-bubble-container">
+				<label for="first_name">First Name</label>
+				<input type="text" name="first_name" autofocus placeholder={{result[1]}}>
 				<img src="{{ url_for('static', filename='img/profile.png')}}" class="input-icons">
-			
-				</div>
-				<div class="form-bubble-container form-bubble-container-get">
-					<p>Last Name</p>
-					<input type="text" name="last_name" autofocus placeholder={{result[2]}}>
+			</div>
+			<div class="form-bubble-container">
+				<label for="last_name">Last Name</label>
+				<input type="text" name="last_name" autofocus placeholder={{result[2]}}>
 				<img src="{{ url_for('static', filename='img/profile.png')}}" class="input-icons">
-			
-				</div>
-				<div class="form-bubble-container form-bubble-container-get">
-					<p>Primary Skill </p>
-					<input type="text" name="pri_skill" autofocus placeholder={{result[3]}}>
+			</div>
+			<div class="form-bubble-container">
+				<label for="pri_skill">Primary Skill</label>
+				<input type="text" name="pri_skill" autofocus placeholder={{result[3]}}>
 				<img src="{{ url_for('static', filename='img/bag.png')}}" class="input-icons">
-			
-				</div>
-				<div class="form-bubble-container form-bubble-container-get">
-					<p>Location </p>
-					<input type="text" name="location" autofocus placeholder={{result[4]}}>
+			</div>
+			<div class="form-bubble-container">
+				<label for="location">Location</label>
+				<input type="text" name="location" autofocus placeholder={{result[4]}}>
 				<img src="{{ url_for('static', filename='img/location.png')}}" class="input-icons">
+			</div>
 			
-				</div>
-			</div>
-			<div class="button-container">
-					<a href="/editemp/done">
-					<button type="submit" class="form-button">Edit Employee</button>
-				</a>
-			</div>
+			<button type="submit" class="form-button1">EDIT EMPLOYEE</button>
+		</div>
+	
+		</form>
+			
 		</div>
 	</div>
 </body>
