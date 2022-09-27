@@ -174,7 +174,7 @@ def editEmpdone():
     cursor = db_conn.cursor()
     cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location,))
     db_conn.commit()
-        emp_name = "" + first_name + " " + last_name
+    emp_name = "" + first_name + " " + last_name
 
 
 
