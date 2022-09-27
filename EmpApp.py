@@ -192,7 +192,7 @@ def deleteEmp():
 #delete Employee Results
 @app.route("/deleteemp/results",methods=['GET','POST'])
 def deleteEmployee():
-    global result
+     global result
      #Get Employee
      emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
