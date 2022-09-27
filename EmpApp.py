@@ -219,14 +219,14 @@ def deleteEmployee():
 #delete emply
 @app.route("/deleteemp/delete",methods=['GET','POST'])
 def deletedelete():
-emp_id = request.form['emp_id']
-# SELECT STATEMENT TO GET DATA FROM MYSQL
-select_stmt = "DELETE * FROM employee WHERE emp_id = %(emp_id)s"
-cursor = db_conn.cursor()  
-cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
+    emp_id = request.form['emp_id']
+    # SELECT STATEMENT TO GET DATA FROM MYSQL
+    select_stmt = "DELETE * FROM employee WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()  
+    cursor.execute(select_stmt, { 'emp_id': int(emp_id) })
          # #FETCH ONLY ONE ROWS OUTPUT
      
-return render_template("deleteEmpDone.html",date=datetime.now())       
+    return render_template("deleteEmpDone.html",date=datetime.now())       
     
 
 #About Us
