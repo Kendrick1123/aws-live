@@ -53,17 +53,7 @@
 					<p>Location </p>
 					<p>{{ result[4] }}</p>
 				</div>
-				<form action="/deleteemp/done" autocomplete="on" method="POST" class="form-bubble">
-		
-			<label>Enter EMPLOYEE ID again to confirm delete!</label>
-			<input type="number" name="emp_id" autofocus size="40">
-		
-	
-			<a href="/deleteemp/done">
-				<button type="submit" class="form-button2">DELETE EMPLOYEE</button>
-			</a>
-		
-		</form>
+				
 			</div>
 	
 			
@@ -75,5 +65,16 @@
 			
 		</div>
 	</div>
+<form action="/deleteemp/done" autocomplete="on" method="POST" class="form-bubble">
+		
+			<label>Enter EMPLOYEE ID again to confirm delete!</label>
+			<input type="number" name="emp_id" autofocus size="40">
+		
+	
+			<a href="/deleteemp/done">
+				<button type="submit" class="form-button2">DELETE EMPLOYEE</button>
+			</a>
+		
+		</form>
 </body>
 </html>
