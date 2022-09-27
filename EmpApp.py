@@ -176,7 +176,7 @@ def editEmpdone():
 
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return render_template('index.html', name=emp_name)
 #About Us
 @app.route("/aboutus/")
 def Aboutus():
